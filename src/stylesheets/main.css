@@ -1,0 +1,271 @@
+  html, body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* gradient background annimation */
+
+  body{
+    height: 100vh;
+    background: linear-gradient(#e34e24, #e3ae24);
+    background-size: 300% 300%;
+    max-height: 100%;
+    animation: color 12s ease-in-out infinite;
+    font-family: 'Rubik Bubbles', 'cursive';
+    cursor:none;
+    
+  }
+
+  .cursor{
+    content: ''; /* Aucun contenu (peut être une image si nécessaire) */
+  width: 20px; /* Largeur du curseur */
+  height: 20px; /* Hauteur du curseur */
+  border: 2px solid #00ff00; /* Couleur et épaisseur de la bordure */
+  border-radius: 50%; /* Pour créer un cercle */
+  position: fixed; /* Position fixe par rapport à la fenêtre */
+  pointer-events: none; /* Ignore les événements de souris pour le curseur personnalisé */
+  top: 50%; /* Position verticale au milieu de la fenêtre */
+  left: 50%; /* Position horizontale au milieu de la fenêtre */
+  transform: translate(-50%, -50%); /* Centre le curseur */
+  }
+
+  @keyframes color{
+    0%{
+      background-position: 0 0;
+    }
+    50%{
+      background-position: 0 100%;
+    }
+    100%{
+      background-position: 0 0;
+    }
+  }
+
+  .homePageContainer{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  /*Css for covid play button*/
+
+  .play, .covidClick{
+    width: 45vmin;
+    height: 45vmin;  
+    background-image: url(../img/playButton.png);
+    background-color: transparent;
+    border: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .play{
+    position: relative;
+  }
+  .covidClick{
+    margin-top: 15vh;
+  }
+
+  /* Css for font */
+
+  .fontRubikBubbles {
+    font-family: 'Rubik Bubbles', 'cursive';
+  }
+
+  /* homepage title */
+  .title {
+    position: relative;
+    font-size: 15vmin;
+    user-select: none;
+    letter-spacing: -3px;
+    white-space: nowrap;
+  }
+
+  .covidContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .confirmButton{
+    position: relative;
+    width: 60px;
+    left: 70%
+  }
+
+  .custom-link {
+    font-size: 20px; /* Ajustez la taille de la police des sous titres */
+  }
+
+
+.custom-link {
+  font-size: 20px; /* Ajustez la taille de la police des sous-titres */
+}
+
+
+.custom-btn {
+    margin-right: 5px; /* Ajustez la valeur selon vos préférences */
+}
+
+
+
+/*CSS game page*/
+.alert-dark{
+  width: 300px;
+  height: auto;
+  text-align: center;
+}
+
+.upgradeButton{
+  width: 300px;
+}
+
+/*CSS for the clickvalue animation*/
+.click-feedback{
+  position: fixed;
+  color: aliceblue;
+  font-family: 'Rubik Bubbles', 'cursive';
+  font-size: larger;
+  z-index: 999;
+}
+
+/* navBar */
+
+.logo-img {
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  white-space: nowrap;
+
+}
+
+.navbar a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor:none;
+
+}
+
+.navbar a:hover {
+  color: black;
+  
+}
+
+.navbar-logo {
+  cursor: pointer;
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-right {
+  cursor: pointer;
+}
+
+.navbar a.large-link {
+  font-size: 30px;
+}
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+
+}
+
+.navbar a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: black;
+}
+
+.navbar-logo {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-right {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.navbar a.large-link {
+  font-size: 30;
+}
+
+
+
+.custom-table {
+  border-radius: 15px;
+  border: 4px solid black;
+  background-color: #ffc0cb; /* Rose */
+  width: 350px;
+  height: 400px;
+  font-size: 35px;
+  text-align: center;
+}
+
+/* Styles pour les écrans de taille moyenne (par exemple, tablettes et téléphones) */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* Maintenir la direction horizontale */
+    justify-content: space-around; /* Espacement équitable entre les éléments */
+    text-align: center; /* Centrez le texte */
+  }
+
+  .navbar a {
+    width: auto; /* Ajustez la largeur automatiquement */
+  }
+
+  .navbar-right {
+    margin-top: 10px; /* Ajoutez un espace entre le dernier élément et le haut */
+  }
+  .navbar a.large-link {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .navbar {
+    flex-direction: row; 
+    justify-content: space-around; 
+    text-align: center; 
+  }
+
+  .navbar a {
+    width: auto; 
+  }
+
+  .navbar-right {
+    margin-top: 10px; 
+  }
+  .navbar a.large-link {
+    font-size: 20px;
+  }
+}
