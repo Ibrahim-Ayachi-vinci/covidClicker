@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 const getUsers = async () => {
   try {
-    const response = await fetch('/api/leaderBoard');
+    const response = await fetch(`${process.env.API_BASE_URL}/leaderBoard`);
     console.log('reponse');
     console.log(response);
     if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
