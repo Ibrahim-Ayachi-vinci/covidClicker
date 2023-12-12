@@ -66,7 +66,7 @@ const HomePage = () => {
       easing: 'linear',
       loop: true,
       duration: anime.random(1500, 7000),
-      scale: 8,
+      scale: anime.random(3, 10),
       opacity: 0
     });
 

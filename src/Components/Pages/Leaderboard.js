@@ -20,6 +20,7 @@ const Leaderboard = async () => {
   console.log(users);
 
   const text = `
+  <div class="table-container">
   <table class="table">
    <thead>
      <tr>
@@ -32,6 +33,7 @@ const Leaderboard = async () => {
    ${getAllTableLines()}
    </tbody>
   </table>
+  </div>
   `;
   main.innerHTML = text;
 

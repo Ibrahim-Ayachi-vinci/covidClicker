@@ -5,7 +5,6 @@ import Navigate from '../Router/Navigate';
 
 
 const GamePage = async () => {
-
   if(!getAuthenticatedUser()) {
     Navigate('/login')
     return;
@@ -19,22 +18,28 @@ const GamePage = async () => {
   let proggress = (score*100)/8000000000;
 
   const main = document.querySelector('main');
+  const body = document.querySelector('body');
+ 
+  body.style.overflow = 'hidden';
+  
   
   const text = ` 
-  <div class="container d-flex justify-content-evenly align-items-center flex-column">
-    <div class="alert alert-dark" role="alert ">
-      <div class="score">
-        ${score}
-      </div>  
+  <div class="mainContainer">
+  <div class="autoUpgradesDiv"></div> 
+    <div class="clickerContainer">
+      
+        <div class="score">
+          ${score}
+        </div>  
+   
+      <button class="covidClick"></button>
+      <div class="progress" style="width: 100%; margin-top: 10vh">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ${proggress}%" aria-valuenow="${proggress}" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     </div>
-    <div><button class="covidClick"></button></div>
-    <div class="progress" style="width: 50%; margin-top: 10vh">
-      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ${proggress}%" aria-valuenow="${proggress}" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </div>
-  <div class="upgradesDiv"></div>  
+    <div class="upgradesDiv"></div> 
+  </div>  
   `;
-
 
   main.innerHTML = text;
 
@@ -102,12 +107,12 @@ const GamePage = async () => {
   
 // Partie upgrades Teodor
 const upgradesTable = document.querySelector('.upgradesDiv')
+const autoUpgradesTable = document.querySelector('.autoUpgradesDiv')
 renderUpgrades()
 
 
 async function renderUpgrades(){
 try{
-
   const username = getAuthenticatedUser().username;
   const options = {
     method: 'POST',
@@ -119,14 +124,14 @@ try{
     },
   };
 
-  const response = await fetch(`${process.env.API_BASE_URL}/upgrades/readAll`, options);
+  const response = await fetch(`${process.env.API_BASE_URL}/readAll`, options);
 
   if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
 
   const upgrades = await response.json();
 
   renderUpgradesMenu(upgrades)
-  const upgradeButtons = document.querySelectorAll('.upgradeButton')
+  const upgradeButtons = document.querySelectorAll('.buttonAnnimation')
 
   upgradeButtons.forEach((upgrade) => {
     upgrade.addEventListener('click', (event) => {
@@ -154,44 +159,63 @@ try{
 
 
     function renderUpgradesMenu(menu){
-      const tableAsString = getMenuTableAsString(menu);
-      upgradesTable.innerHTML += tableAsString;
+    
+      const tables = getMenuTableAsString(menu);
+      upgradesTable.innerHTML = tables.upgradesLines;
+      autoUpgradesTable.innerHTML = tables.autoUpgrades;
+      const annimateButtonsR = document.querySelectorAll('.upgradeButtonR');
+      const annimateButtonsL = document.querySelectorAll('.upgradeButtonL');
+      anime.set(annimateButtonsR, {
+        translateX: '500px',
+      });
+      anime({
+        targets: annimateButtonsR,
+        translateX: '0px',
+        delay: anime.stagger(100),
+      });
+      anime.set(annimateButtonsL, {
+        translateX: '-500px',
+      });
+      anime({
+        targets: annimateButtonsL,
+        translateX: '0px',
+        delay: anime.stagger(100),
+      });
     }
 
     function getMenuTableAsString(menu){
-      const menuTableLines = getAllTableLines(menu)
-      const menuTable = addLinesToTable(menuTableLines);
+      const menuTable = getAllTableLines(menu)
       return menuTable;
     }
 
-    function addLinesToTable(tableLines){
-      const menuTable = `
-      <div class="position-absolute top-50 end-0 translate-middle">
-      <div class="table-responsive pt-5">
-      <table class="table custom-table">
-        ${tableLines}
-      </table>
-      </div>
-      </div>`;
-      return menuTable;  
-    }
-
     function getAllTableLines(menu){
-      let upgradesLines='';
+      let upgradesLines= "";
+      let autoUpgrades = "";
 
       menu?.forEach((upgrade) => {
-        upgradesLines += `
-        <tr>
-          <td class="animate-upgrade">
-          <button class="upgradeButton" data-id=${upgrade.id}>
-          ${upgrade.title}
-          cost: ${upgrade.cost}
-          </button>
-          </td>
-        </tr>`;
-      });
+        if(upgrade.operation === 'auto'){
+          autoUpgrades += `
+          <div>
+            <button class="upgradeButtonL buttonAnnimation" data-id=${upgrade.id}>
+              ${upgrade.title}
+              cost: ${upgrade.cost}
+            </button>
+          </div>
+          `;
+        }else{
+          upgradesLines += `
+ 
+          <div>
+            <button class="upgradeButtonR buttonAnnimation" data-id=${upgrade.id}>
+              ${upgrade.title}
+              cost: ${upgrade.cost}
+            </button>
+          </div>
+          `;
+        }
 
-      return upgradesLines;
+      });
+      return {autoUpgrades, upgradesLines};
     }
 
     async function onClickEvent(idUpgrade){
@@ -215,12 +239,11 @@ try{
       };
       const upgradeClick = await response.json();
       console.log(upgradeClick);
-      
+    
     clickValue = await takeCLickValue();
     score = await takeScore();
     renderUpgrades();
     scoreCompteur.innerText=score;
-
     }
     
 
@@ -238,7 +261,7 @@ try{
           'Content-Type': 'application/json',
         },
       };
-      const response = await fetch(`${process.env.API_BASE_URL}/clicker/valueClickUser`, options);
+      const response = await fetch(`${process.env.API_BASE_URL}/valueClickUser`, options);
 
       if(!response.ok){throw Error `fetch error`};
       const click = await response.json();
@@ -246,6 +269,8 @@ try{
 
       return click;
     }
+
+   // SCORE 
 
     async function addUserScore (addValue) {
       const username = getAuthenticatedUser().username;
@@ -261,7 +286,7 @@ try{
           'Content-Type': 'application/json',
         }
       };
-      const response = await fetch(`${process.env.API_BASE_URL}/clicker/registerScore`, options);
+      const response = await fetch(`${process.env.API_BASE_URL}/registerScore`, options);
 
       if(!response.ok){throw Error `fetch error`};
       const scoreUpdate = await response.json();
@@ -281,7 +306,7 @@ try{
           'Content-Type': 'application/json',
         }
       };
-      const response = await fetch(`${process.env.API_BASE_URL}/clicker/scoreUser`, options);
+      const response = await fetch(`${process.env.API_BASE_URL}/scoreUser`, options);
       if(!response.ok){throw Error `fetch error`};
       const scoreUser = await response.json();
       console.log(scoreUser);

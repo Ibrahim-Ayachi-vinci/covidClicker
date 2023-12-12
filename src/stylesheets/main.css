@@ -13,21 +13,28 @@
     max-height: 100%;
     animation: color 12s ease-in-out infinite;
     font-family: 'Rubik Bubbles', 'cursive';
-    cursor:none;
+    cursor:none !important;
     
   }
 
   .cursor{
-    content: ''; /* Aucun contenu (peut être une image si nécessaire) */
-  width: 20px; /* Largeur du curseur */
-  height: 20px; /* Hauteur du curseur */
-  border: 2px solid #00ff00; /* Couleur et épaisseur de la bordure */
-  border-radius: 50%; /* Pour créer un cercle */
-  position: fixed; /* Position fixe par rapport à la fenêtre */
-  pointer-events: none; /* Ignore les événements de souris pour le curseur personnalisé */
-  top: 50%; /* Position verticale au milieu de la fenêtre */
-  left: 50%; /* Position horizontale au milieu de la fenêtre */
-  transform: translate(-50%, -50%); /* Centre le curseur */
+    width: 50px;
+    height: 50px;
+    background-image: url('../img/cursor-navigation.svg'); /* Image par défaut */
+    background-size: cover;
+    position: fixed;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-icon{
+    cursor: none;
+  }
+
+  #logout{
+    cursor: none;
   }
 
   @keyframes color{
@@ -61,13 +68,16 @@
     border: transparent;
     background-repeat: no-repeat;
     background-size: contain;
+    cursor: none !important;
   }
   .play{
     position: relative;
   }
+
   .covidClick{
-    margin-top: 15vh;
+    margin-top: 20px;
   }
+  
 
   /* Css for font */
 
@@ -113,13 +123,37 @@
 
 /*CSS game page*/
 .alert-dark{
-  width: 300px;
+  width: 100%;
   height: auto;
   text-align: center;
 }
 
-.upgradeButton{
-  width: 300px;
+.mainContainer{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  height: 85vh;
+}
+
+.clickerContainer{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.upgradesDiv, .autoUpgradesDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+.upgradeButtonR, .upgradeButtonL{
+  width: 15vw;
+  height: 10vh;
 }
 
 /*CSS for the clickvalue animation*/
@@ -160,8 +194,8 @@
   
 }
 
-.navbar-logo {
-  cursor: pointer;
+.logoNav {
+  cursor: none;
 }
 
 .navbar-center {
@@ -171,7 +205,7 @@
 }
 
 .navbar-right {
-  cursor: pointer;
+  cursor: none;
 }
 
 .navbar a.large-link {
@@ -268,4 +302,18 @@
   .navbar a.large-link {
     font-size: 20px;
   }
+}
+
+/*LeaderBoard CSS*/
+.table-container {
+  max-width: 800px; 
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px; 
+  overflow: hidden; 
 }
