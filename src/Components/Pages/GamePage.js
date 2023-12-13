@@ -306,7 +306,7 @@ try{
           'Content-Type': 'application/json',
         }
       };
-      const response = await fetch(`${process.env.API_BASE_URL}/scoreUser`, options);
+      const response = await fetch(`${process.env.API_BASE_URL}/clicker/scoreUser`, options);
       if(!response.ok){throw Error `fetch error`};
       const scoreUser = await response.json();
       console.log(scoreUser);
