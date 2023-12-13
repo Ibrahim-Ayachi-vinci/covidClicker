@@ -261,7 +261,7 @@ try{
           'Content-Type': 'application/json',
         },
       };
-      const response = await fetch(`${process.env.API_BASE_URL}/valueClickUser`, options);
+      const response = await fetch(`${process.env.API_BASE_URL}/clicker/valueClickUser`, options);
 
       if(!response.ok){throw Error `fetch error`};
       const click = await response.json();
