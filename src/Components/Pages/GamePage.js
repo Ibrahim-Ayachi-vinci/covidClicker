@@ -88,6 +88,7 @@ function startSaveInterval(){
     addUserScore(score);
   }, 3000);
 }
+console.log(autoValue);
 
 autoClickTimer();
   function autoClickTimer(){
@@ -99,6 +100,7 @@ autoClickTimer();
         if(autoValue!==0){
           updateProgressBar();
           const newValue = score+autoValue;
+          console.log(newValue);
           anime({
             targets: scoreCompteur,
             innerText: [score, newValue],
