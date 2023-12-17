@@ -100,7 +100,7 @@ autoClickTimer();
         if(autoValue!==0){
           updateProgressBar();
           const newValue = score+autoValue;
-          console.log(newValue);
+          console.log(`je test : ${newValue}`);
           anime({
             targets: scoreCompteur,
             innerText: [score, newValue],
@@ -351,7 +351,6 @@ autoClickTimer();
   async function onClickEvent(idUpgrade) {
     await addUserScore(score);
     const username = getAuthenticatedUser().username;
-    console.log(idUpgrade);
     const options = {
       method: 'PATCH',
       body: JSON.stringify({
@@ -398,7 +397,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const click = await response.json();
-    console.log(click);
 
     return click;
   }
@@ -421,7 +419,7 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const autoClick = await response.json();
-    console.log(autoClick);
+    console.log(`la valeur de l'autoClick est de : ${autoClick}`);
 
     return autoClick;
   }
