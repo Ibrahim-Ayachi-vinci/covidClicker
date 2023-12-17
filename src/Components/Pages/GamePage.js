@@ -92,10 +92,6 @@ function startSaveInterval(){
 autoClickTimer();
   function autoClickTimer(){
     autoClickintervalID=setInterval(() => {
-        if(window.location.pathname!=="/game"){
-          clearInterval(autoClickintervalID);
-          return;
-        }
         if(autoValue!==0){
           updateProgressBar();
           const newValue = score+autoValue;
