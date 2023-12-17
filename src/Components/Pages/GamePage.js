@@ -91,12 +91,15 @@ function startSaveInterval(){
 
 autoClickTimer();
   function autoClickTimer(){
+    console.log(`Je rentre dans autoClickTimer`);
     autoClickintervalID=setInterval(() => {
         if(window.location.pathname!=="/game"){
+          console.log('Je rentre dan le if de pathname')
           clearInterval(autoClickintervalID);
           return;
         }
         if(autoValue!==0){
+          console.log('Je rentre dans le if de autoValue');
           updateProgressBar();
           const newValue = score+autoValue;
           anime({
@@ -414,6 +417,7 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const autoClick = await response.json();
+    console.log(`la valeur de mon autoClick est de : ${autoClick}`);
     return autoClick;
   }
 
