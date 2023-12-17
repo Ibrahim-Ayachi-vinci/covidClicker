@@ -223,7 +223,7 @@ autoClickTimer();
         },
       };
 
-      const response = await fetch(`/${process.env.API_BASE_URL}/upgrades/readAll`, options);
+      const response = await fetch(`${process.env.API_BASE_URL}/upgrades/readAll`, options);
 
       if (!response.ok)
         throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
