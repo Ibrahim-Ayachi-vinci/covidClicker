@@ -88,7 +88,6 @@ function startSaveInterval(){
     addUserScore(score);
   }, 3000);
 }
-console.log(autoValue);
 
 autoClickTimer();
   function autoClickTimer(){
@@ -100,7 +99,6 @@ autoClickTimer();
         if(autoValue!==0){
           updateProgressBar();
           const newValue = score+autoValue;
-          console.log(`je test : ${newValue}`);
           anime({
             targets: scoreCompteur,
             innerText: [score, newValue],
@@ -364,11 +362,8 @@ autoClickTimer();
     const response = await fetch(`${process.env.API_BASE_URL}/userUpgrades`, options);
 
     if (!response.ok) {
-      console.log(response.status);
       throw Error`fetch error`;
     }
-    const upgradeClick = await response.json();
-    console.log(upgradeClick);
 
     clickValue = await takeCLickValue();
     score = await takeScore();
@@ -419,8 +414,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const autoClick = await response.json();
-    console.log(`la valeur de l'autoClick est de : ${autoClick}`);
-
     return autoClick;
   }
 
@@ -446,7 +439,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const scoreUpdate = await response.json();
-    console.log(scoreUpdate);
     return scoreUpdate;
   }
 
@@ -466,7 +458,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const scoreUser = await response.json();
-    console.log(scoreUser);
 
     return scoreUser;
   }
