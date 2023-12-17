@@ -110,7 +110,7 @@ autoClickTimer();
           popAutoValueAnimation();
           upgradesColorChangeByCost();
         }
-      }, 1000);
+      }, 3000);
   }
 
 
