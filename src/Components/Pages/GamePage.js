@@ -392,7 +392,7 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const click = await response.json();
-    console.log(click);
+    console.log(`test`);
 
     return click;
   }
