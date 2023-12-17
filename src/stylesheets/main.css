@@ -1,40 +1,36 @@
-  html, body{
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* gradient background annimation */
+html {
+  height: fit-content;
+}
 
+ /* gradient background annimation */
+
+ /***************************************************************************************
+*    Title: Background gradiant
+*    Author: Tahmid Ahmed
+*    Date: 07/05/2021
+*    Code version: /
+*    Availability: https://www.youtube.com/watch?v=LqRfQVcn3FY
+*
+***************************************************************************************/
   body{
-    height: 100vh;
+    height: auto;
     background: linear-gradient(#e34e24, #e3ae24);
-    background-size: 300% 300%;
-    max-height: 100%;
+    background-size: 100% 400%;
+    background-repeat: no-repeat;
     animation: color 12s ease-in-out infinite;
     font-family: 'Rubik Bubbles', 'cursive';
     cursor:none !important;
     
   }
-
-  .cursor{
-    width: 50px;
-    height: 50px;
-    background-image: url('../img/cursor-navigation.svg'); /* Image par défaut */
-    background-size: cover;
-    position: fixed;
-    pointer-events: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .login-icon{
-    cursor: none;
-  }
-
-  #logout{
-    cursor: none;
+  body.pageTooShort{
+    height: 100vh;
+    background: linear-gradient(#e34e24, #e3ae24);
+    background-size: 100% 400%;
+    background-repeat: no-repeat;
+    animation: color 12s ease-in-out infinite;
+    font-family: 'Rubik Bubbles', 'cursive';
+    cursor:none !important;
+    
   }
 
   @keyframes color{
@@ -49,6 +45,42 @@
     }
   }
 
+  .cursor {
+    width: 35px;
+    height: 35px;
+    background-image: url('../img/cursorPointer.png');
+    background-size: cover;
+    position: fixed;  /* Utilisez fixed au lieu de absolute */
+    pointer-events: none;
+    display: none; /* Ajoutez ceci pour le masquer initialement */
+  }
+
+  .cursor-click {
+    width: 40px;
+    height: 40px;
+    background-image: url('../img/cursorClick.png');
+    background-size: cover;
+    position: fixed;  /* Utilisez fixed au lieu de absolute */
+    pointer-events: none;
+    display: none; /* Ajoutez ceci pour le masquer initialement */
+    cursor: none;
+  }
+  
+  .buttonAnnimation{
+    cursor: none !important;
+  }
+
+
+  .login-icon{
+    cursor: none;
+  }
+
+  #logout{
+    cursor: none;
+  }
+
+  
+
   .homePageContainer{
     width: 100vw;
     height: 80vh;
@@ -58,6 +90,11 @@
     align-items: center;
   }
   
+  /* Login and register page */
+  .errorMessage{
+    color: red;
+    text-shadow: 1px 1px 1px black;
+  }
   /*Css for covid play button*/
 
   .play, .covidClick{
@@ -102,7 +139,8 @@
   .confirmButton{
     position: relative;
     width: 60px;
-    left: 70%
+    left: 70%;
+    cursor: none !important;
   }
 
   .custom-link {
@@ -126,6 +164,10 @@
   width: 100%;
   height: auto;
   text-align: center;
+}
+
+.score{
+  font-size: 5vmin
 }
 
 .mainContainer{
@@ -156,12 +198,27 @@
   height: 10vh;
 }
 
+.covidCurrencyScore{
+  margin-top: -27px;
+}
+.covidCurrencyUpgrades{
+  margin-top: -2px;
+  margin-left: 5px;
+}
 /*CSS for the clickvalue animation*/
 .click-feedback{
   position: fixed;
   color: aliceblue;
   font-family: 'Rubik Bubbles', 'cursive';
   font-size: larger;
+  z-index: 999;
+}
+
+.autoClick-feedback{
+  position:absolute;
+  color: rgb(248, 182, 237);
+  font-family: 'Rubik Bubbles', 'cursive';
+  font-size:300%;
   z-index: 999;
 }
 
@@ -202,10 +259,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.navbar-right {
-  cursor: none;
 }
 
 .navbar a.large-link {
@@ -283,6 +336,9 @@
   .navbar a.large-link {
     font-size: 30px;
   }
+  .cursor {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -302,18 +358,97 @@
   .navbar a.large-link {
     font-size: 20px;
   }
+  .cursor {
+    display: none;
+  }
 }
 
 /*LeaderBoard CSS*/
+.podiumAndTableContainer{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  
+}
+.leaderboardPageContainer{
+  height: 95vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .table-container {
-  max-width: 800px; 
-  margin: 20px auto;
-  padding: 20px;
+  max-width: 80vw; 
+  max-height: 50vh; 
+  overflow-y: auto; 
+}
+
+.table-header {
+  width: 780px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+ 
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 10px; 
-  overflow: hidden; 
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/*Scroll bar leaderboard*/
+.table-container::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 20px; 
+}
+
+
+.table-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+}
+
+
+.covidContaierLeaderboard{
+  display: flex;
+  justify-content: space-between;
+}
+
+.podiumContainer {
+  height: 150px;
+  width: 270px;
+  align-self: center;
+}
+
+.userCardContainer{
+  width: auto;
+  height: 200px;
+  align-self: center;
+  margin-bottom: 40vmin;
+}
+.userCard{
+  width: 150px; 
+  height: 200px;
+  background-color: #c073ff; 
+  color: #000000; 
+  text-align: center; 
+  
+  border-collapse: collapse;
+  
+  display: flex;
+  align-items: center;
+  justify-self: center;
+
+  border: 2px solid #000000;
+  border-radius: 10px;
+
+  background-image: url(../img/cup-2015198_1280.png);
+  background-size: cover;
+  background-position: center;
 }
