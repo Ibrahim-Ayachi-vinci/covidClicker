@@ -5,6 +5,8 @@ import { killAllIntervals } from './GamePage';
 const PrivacyPolicy = ()=> {
     killAllIntervals();
     const main = document.querySelector('main');
+    const body = document.querySelector('body');
+    body.style.overflow = 'auto';
     
     const text = `
     <br>
