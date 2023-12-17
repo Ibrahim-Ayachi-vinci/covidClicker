@@ -439,7 +439,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const scoreUpdate = await response.json();
-    console.log(scoreUpdate);
     return scoreUpdate;
   }
 
