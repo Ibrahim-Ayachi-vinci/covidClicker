@@ -26,7 +26,7 @@ const Register = () => {
         <p class="passwordNoMatch errorMessage" ></p>
         <div>
         <input type="checkbox" name="check" class="changeCursor buttonAnnimation" value="confirmPolicy"required />
-        <label for="confirmPolicy" class="buttonAnnimation">I aggree to your <a id = "redirectedPrivacy" href="#" target="_blank" class="link-underline-primary changeCursor buttonAnnimation">privacy policy</a></label>
+        <label for="confirmPolicy" class="buttonAnnimation">I aggree to your <a href="#"  target="_blank" class="link-underline-primary changeCursor buttonAnnimation privacy">privacy policy</a></label>
         </div>
 
         <input type="image" src="${button}" class="confirmButton changeCursor">
@@ -43,8 +43,11 @@ const Register = () => {
     const passwordNoMatch = document.querySelector('.passwordNoMatch');
     const body = document.querySelector('body');
     body.className = 'pageTooShort';
-    const redirected = document.querySelector('#redirectedPrivacy');
-    redirected.addEventListener('click', Navigate('privacyPolicy'));
+    const privacy = document.querySelector('.privacy');
+
+    privacy.addEventListener('click', () => {
+      Navigate('/privacyPolicy');
+    })
     
     changeCursor();
     
