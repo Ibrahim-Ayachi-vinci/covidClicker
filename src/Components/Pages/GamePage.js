@@ -438,7 +438,7 @@ autoClickTimer();
       },
     };
     const response = await fetch(`${process.env.API_BASE_URL}/clicker/registerScore`, options);
-
+    console.log('Jenregistre mon score ');
     if (!response.ok) {
       throw Error`fetch error`;
     }
