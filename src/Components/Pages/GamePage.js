@@ -91,15 +91,12 @@ function startSaveInterval(){
 
 autoClickTimer();
   function autoClickTimer(){
-    console.log(`Je rentre dans autoClickTimer`);
     autoClickintervalID=setInterval(() => {
         if(window.location.pathname!=="/game"){
-          console.log('Je rentre dan le if de pathname')
           clearInterval(autoClickintervalID);
           return;
         }
         if(autoValue!==0){
-          console.log('Je rentre dans le if de autoValue');
           updateProgressBar();
           const newValue = score+autoValue;
           anime({
@@ -417,7 +414,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const autoClick = await response.json();
-    console.log(`la valeur de mon autoClick est de : ${autoClick}`);
     return autoClick;
   }
 
@@ -438,11 +434,11 @@ autoClickTimer();
       },
     };
     const response = await fetch(`${process.env.API_BASE_URL}/clicker/registerScore`, options);
-    console.log('Jenregistre mon score ');
     if (!response.ok) {
       throw Error`fetch error`;
     }
     const scoreUpdate = await response.json();
+    console.log(scoreUpdate);
     return scoreUpdate;
   }
 
@@ -462,7 +458,7 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const scoreUser = await response.json();
-
+    
     return scoreUser;
   }
   
