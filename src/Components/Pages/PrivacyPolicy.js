@@ -7,6 +7,7 @@ const PrivacyPolicy = ()=> {
     const main = document.querySelector('main');
     const body = document.querySelector('body');
     body.style.overflow = 'auto';
+    body.classList.remove("pageTooShort");
     
     const text = `
     <br>
