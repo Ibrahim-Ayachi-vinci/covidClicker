@@ -106,7 +106,7 @@ autoClickTimer();
           popAutoValueAnimation();
           upgradesColorChangeByCost();
         }
-      }, 3000);
+      }, 1000);
   }
 
 
@@ -410,7 +410,6 @@ autoClickTimer();
       throw Error`fetch error`;
     }
     const autoClick = await response.json();
-    console.log(`take autoclick`)
     return autoClick;
   }
 
