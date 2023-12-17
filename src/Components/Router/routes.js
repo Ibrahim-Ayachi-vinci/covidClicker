@@ -11,7 +11,7 @@ const routes = {
   '/leaderboard': Leaderboard,
   '/login': Login,
   '/register': Register,
-  '/privayPolicy': PrivacyPolicy
+  '/privacyPolicy': PrivacyPolicy
 };
 
 export default routes;

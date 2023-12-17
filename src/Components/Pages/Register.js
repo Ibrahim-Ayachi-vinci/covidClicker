@@ -26,7 +26,7 @@ const Register = () => {
         <p class="passwordNoMatch errorMessage" ></p>
         <div>
         <input type="checkbox" name="check" class="changeCursor buttonAnnimation" value="confirmPolicy"required />
-        <label for="confirmPolicy" class="buttonAnnimation">I aggree to your <a href="/privayPolicy" data-uri="/privayPolicy" target="_blank" class="link-underline-primary changeCursor buttonAnnimation">privacy policy</a></label>
+        <label for="confirmPolicy" class="buttonAnnimation">I aggree to your <a href="#" data-uri="/privacyPolicy" target="_blank" class="link-underline-primary changeCursor buttonAnnimation">privacy policy</a></label>
         </div>
 
         <input type="image" src="${button}" class="confirmButton changeCursor">
